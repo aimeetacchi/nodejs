@@ -9,13 +9,26 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.post('/createUser', (req, res) => {
-	console.log(res.req.body);
+	//console.log(res.req.body);
 	store
 		.createUser({
 			username: req.body.username,
 			password: req.body.password
 		})
 		.then(() => res.sendStatus(200));
+})
+
+
+app.post('/login', (req, res) => {
+	store
+	.authenticate({
+		username: req.body.username,
+		password: req.body.password
+	})
+	.then(({ success }) => {
+		if (success) res.sendStatus(200)
+		else res.sendStatus(401)
+	})
 })
 
 app.listen(8000, () => {
