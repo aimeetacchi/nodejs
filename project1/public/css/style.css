@@ -1,3 +1,13 @@
 body {
 	background-color: #efefef;
 }
+
+.container {
+	width: 70%;
+	margin: 0 auto;
+}
+
+h1 {
+	font-size: 2em;
+	color: red;
+}
